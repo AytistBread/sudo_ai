@@ -15,6 +15,7 @@ OutputBaseFilename=SolyarisAgentSetup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+DisableReadyPage=yes
 ArchitecturesInstallIn64BitMode=x64
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\{#MyAppExeName}
