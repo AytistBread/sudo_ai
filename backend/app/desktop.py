@@ -334,7 +334,7 @@ def run() -> None:
         sys.stdout = open(os.devnull, "w", encoding="utf-8")
     if sys.stderr is None:
         sys.stderr = open(os.devnull, "w", encoding="utf-8")
-    ft.run(main, view=ft.AppView.WEB_BROWSER)
+    ft.run(main, view=ft.AppView.FLET_APP)
 
 
 if __name__ == "__main__":
