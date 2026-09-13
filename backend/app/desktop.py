@@ -5,6 +5,11 @@ import os
 import sys
 from pathlib import Path
 
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, "w", encoding="utf-8")
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, "w", encoding="utf-8")
+
 import flet as ft
 
 from app.graph.analyze import run_analyze
@@ -330,10 +335,6 @@ async def main(page: ft.Page) -> None:
 
 
 def run() -> None:
-    if sys.stdout is None:
-        sys.stdout = open(os.devnull, "w", encoding="utf-8")
-    if sys.stderr is None:
-        sys.stderr = open(os.devnull, "w", encoding="utf-8")
     ft.run(main, view=ft.AppView.FLET_APP)
 
 
