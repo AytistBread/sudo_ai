@@ -14,6 +14,16 @@ def is_configured() -> bool:
     return settings.gigachat_ready
 
 
+def set_credentials(credentials: str) -> None:
+    global _client
+    settings.gigachat_credentials = credentials.strip()
+    _client = None
+
+
+def clear_credentials() -> None:
+    set_credentials("")
+
+
 def get_client() -> GigaChat:
     global _client
     if not settings.gigachat_ready:

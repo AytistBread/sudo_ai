@@ -14,6 +14,7 @@ import flet as ft
 
 from app.graph.analyze import run_analyze
 from app.graph.ingest import ingest_table
+from app.llm.gigachat_client import clear_credentials, set_credentials
 from app.models.schemas import Verdict
 from app.services.criteria_store import load_criteria, save_criteria
 from app.services.excel import parse_protocol
@@ -113,6 +114,14 @@ async def main(page: ft.Page) -> None:
     lamp = ft.Container(width=14, height=14, border_radius=7, bgcolor=MUTED)
     report = ft.Text("Загрузите нормативы, затем протокол испытаний.", size=14, color=TEXT)
     table = ft.Column(spacing=6, scroll=ft.ScrollMode.AUTO, expand=True)
+    credentials = ft.TextField(
+        label="GigaChat API ключ",
+        password=True,
+        can_reveal_password=True,
+        expand=True,
+        dense=True,
+    )
+    credentials_status = ft.Text("Ключ не задан", size=12, color=MUTED)
 
     current = load_criteria(local_only=True)
     if current is not None:
@@ -144,6 +153,24 @@ async def main(page: ft.Page) -> None:
 
     async def pick_protocol(_e=None) -> None:
         await pick("protocol")
+
+    def apply_credentials(_e=None) -> None:
+        if not credentials.value or not credentials.value.strip():
+            credentials_status.value = "Введите ключ"
+            credentials_status.color = DANGER
+        else:
+            set_credentials(credentials.value)
+            credentials.value = ""
+            credentials_status.value = "Ключ применён для текущего запуска"
+            credentials_status.color = SUCCESS
+        page.update()
+
+    def remove_credentials(_e=None) -> None:
+        clear_credentials()
+        credentials.value = ""
+        credentials_status.value = "Ключ удалён"
+        credentials_status.color = MUTED
+        page.update()
 
     async def ingest(_e=None) -> None:
         path: Path | None = state["norms"]
@@ -246,6 +273,25 @@ async def main(page: ft.Page) -> None:
                             size=28,
                             font_family="Georgia",
                             color=TEXT,
+                        ),
+                    ],
+                ),
+                _card(
+                    "GigaChat API",
+                    [
+                        ft.Row(
+                            spacing=8,
+                            controls=[
+                                credentials,
+                                ft.OutlinedButton(content="Применить", on_click=apply_credentials),
+                                ft.TextButton(content="Удалить", on_click=remove_credentials),
+                            ],
+                        ),
+                        credentials_status,
+                        ft.Text(
+                            "Ключ используется только в памяти приложения и не сохраняется в файл.",
+                            size=12,
+                            color=MUTED,
                         ),
                     ],
                 ),
