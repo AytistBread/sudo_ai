@@ -328,7 +328,7 @@ async def main(page: ft.Page) -> None:
 
 
 def run() -> None:
-    ft.run(main, view=ft.AppView.FLET_APP)
+    ft.run(main, view=ft.AppView.WEB_BROWSER)
 
 
 if __name__ == "__main__":

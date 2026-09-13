@@ -7,16 +7,15 @@
 3. Open this `release` folder.
 4. Double-click `run-demo.bat` or `SolyarisAgent.exe`.
 
-The executable is a Windows desktop demo. It does not require Python, Docker, or a GigaChat key for the local traffic-light analysis flow.
+The executable is a portable Windows demo. It includes its Python runtime and does not require Python, Docker, Flet, WebView2, or a GigaChat key for the local traffic-light analysis flow. It opens the interface in the default web browser.
 
 ## If Windows shows "Failed to load Python DLL"
 
-The error means that Windows cannot load a dependency of the bundled Python runtime. Install these Microsoft components, then run the demo again:
+The release includes the bundled Python runtime and VC++ DLLs. If this error still appears, download the ZIP again and extract it completely; do not copy only the EXE out of the `release` folder.
 
 - [Microsoft Visual C++ Redistributable x64](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-- [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)
 
-Extract the GitHub ZIP completely before starting the EXE. Do not run it from inside the ZIP preview. Use the x64 VC++ installer even if Python is not installed. Restarting Windows is normally not required.
+The x64 VC++ installer is only a fallback for older Windows installations. WebView2 is not required because the demo opens in the system browser.
 
 If Windows SmartScreen appears, choose **More info** and verify that the file was downloaded from the author's GitHub repository before continuing.
 
