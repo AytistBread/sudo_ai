@@ -9,6 +9,10 @@
 
 The executable is a portable Windows demo. It includes its Python runtime and does not require Python, Docker, Flet, or a GigaChat key for the local traffic-light analysis flow. It opens the interface in its own window.
 
+## GigaChat key
+
+For AI-assisted extraction and reports, enter your own GigaChat API key in the **GigaChat API** field and click **Apply**. The key is used only for the current run and is not written to `.env` or any project file. Click **Remove** to clear it.
+
 ## If Windows shows "Failed to load Python DLL"
 
 The release includes the bundled Python runtime and VC++ DLLs. If this error still appears, download the ZIP again and extract it completely; do not copy only the EXE out of the `release` folder.
