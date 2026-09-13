@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import asyncio
+import os
+import sys
 from pathlib import Path
 
 import flet as ft
@@ -328,6 +330,10 @@ async def main(page: ft.Page) -> None:
 
 
 def run() -> None:
+    if sys.stdout is None:
+        sys.stdout = open(os.devnull, "w", encoding="utf-8")
+    if sys.stderr is None:
+        sys.stderr = open(os.devnull, "w", encoding="utf-8")
     ft.run(main, view=ft.AppView.WEB_BROWSER)
 
 
