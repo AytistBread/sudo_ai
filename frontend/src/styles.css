@@ -1,0 +1,179 @@
+:root {
+  color: #f3ebe0;
+  background: #16120e;
+  font-family: "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  min-height: 100vh;
+}
+
+.top h1 {
+  margin: 4px 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #c4a574;
+}
+
+.hint {
+  color: #cbbba6;
+  line-height: 1.45;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.upload,
+.result,
+.report {
+  background: #221c16;
+  border: 1px solid #3a3228;
+  border-radius: 8px;
+}
+
+.upload {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+button {
+  border: 0;
+  background: #c4a574;
+  color: #16120e;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ok {
+  color: #7dcc8a;
+  font-size: 13px;
+}
+
+.error {
+  color: #e38a7a;
+}
+
+.light {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #3a3228;
+}
+
+.lamp {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.light.green .lamp {
+  background: #2f9e54;
+}
+
+.light.yellow .lamp {
+  background: #d4b23c;
+}
+
+.light.red .lamp {
+  background: #c44737;
+}
+
+.light strong {
+  font-size: 22px;
+}
+
+.light p,
+.light strong {
+  margin: 0;
+}
+
+.report {
+  white-space: pre-wrap;
+  padding: 16px;
+  line-height: 1.5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.result {
+  overflow-x: auto;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #3a3228;
+}
+
+tr.red td:last-child {
+  color: #e38a7a;
+}
+
+tr.yellow td:last-child {
+  color: #e3c56a;
+}
+
+tr.green td:last-child {
+  color: #7dcc8a;
+}
+
+@media (max-width: 720px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+}
